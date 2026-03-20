@@ -17,6 +17,12 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
+      - name: Download Gradle wrapper jar
+        run: |
+          mkdir -p Mangetsu/gradle/wrapper
+          curl -Lo Mangetsu/gradle/wrapper/gradle-wrapper.jar \
+            https://github.com/gradle/gradle/raw/v8.6.0/gradle/wrapper/gradle-wrapper.jar
+
       - name: Build Debug APK
         run: cd Mangetsu && chmod +x gradlew && ./gradlew assembleDebug --stacktrace
 
